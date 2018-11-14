@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Homepage</title>
+</head>
+<body >
+	<div>
+					<a href="{% url 'websites:Homepage' %}">Home</a>
+				</div>
+				<div >
+					<a href="{% url 'websites:events' %}">Calendar</a>
+				</div>
+				<div >
+					<a href="{% url 'websites:directory' %}">Directory</a>
+				</div>
+				<div >
+					<a >About Us</a>
+				</div>
+				<div >
+					<a >Contact Us</a>
+				</div>
+					<form action="{% url 'websites:directory' %}" method="post">
+						{% csrf_token %}
+						<div class="input-field">
+							<input id="varsityname" name="varsityname" type="text" class="validate">
+							<label class="black-text" for="varsityname">Varsity Name</label>
+						</div>
+
+						<button type="submit" name="action">Search</button>
+					</form>
+		
+						<div>
+							<table >
+								<thead>
+									<tr>
+										<th>Varsity</th>
+										<th>Email</th>
+										<th>Contact #</th>
+									</tr>
+								<thead>
+								<tbody>
+									{% for item in varsities %}
+										<tr>
+											<th>{{item.v_name}}</th>
+											<th>{{item.v_email}}</th>
+											<th>{{item.v_contact}}</th>
+												<table >
+													<thead>
+													<tr>
+													<th>Name</th>
+													<th>Role</th>
+													</tr>
+													<thead>
+											{%for member in members %}
+												{% if member.m_team == item %}
+													<tbody>
+													<th>{{member.m_name}}</th>
+													<th>{{member.m_role}}</th>
+													</tbody>
+												{% endif %}
+												<table >
+											{% endfor %}
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table >
+						</div>
+
+</body>
+</html>

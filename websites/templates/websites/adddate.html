@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Homepage</title>
+</head>
+<body >
+				<div>
+					<a href="{% url 'websites:Homepage' %}">Home</a>
+				</div>
+				<div >
+					<a href="{% url 'websites:events' %}">Calendar</a>
+				</div>
+				<div >
+					<a href="{% url 'websites:directory' %}">Directory</a>
+				</div>
+				<div >
+					<a >About Us</a>
+				</div>
+				<div >
+					<a >Contact Us</a>
+				</div>
+				
+				<form action="{% url 'websites:insertdate' %}" method="post">
+				{% csrf_token %}
+				<div class="input-field">
+		            <span >Date</span>
+		            <input name="date" type="text">
+		        </div> 
+				<div class="input-field">
+		            <span >Start</span>
+		            <input  name="start" type="text">
+		        </div> 
+				<div class="input-field">
+		            <span >End</span>
+		            <input  name="end" type="text">
+		        </div> 
+				<button c type="submit" name="action" value="login">Submit</button>
+				</form>
+				
+				
+</body>
+</html>

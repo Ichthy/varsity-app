@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Homepage</title>
+</head>
+<body >
+				<div>
+					<a href="{% url 'websites:Homepage' %}">Home</a>
+				</div>
+				<div >
+					<a href="{% url 'websites:events' %}">Calendar</a>
+				</div>
+				<div >
+					<a href="{% url 'websites:directory' %}">Directory</a>
+				</div>
+				<div >
+					<a >About Us</a>
+				</div>
+				<div >
+					<a >Contact Us</a>
+				</div>
+		
+						<div>
+							<table >
+								<thead>
+									<tr>
+										<th>Varsity</th>
+										<th>Date</th>
+										<th>Start</th>
+										<th>End</th>
+									</tr>
+								<thead>
+								<tbody>
+									{% for item in dates %}
+										<tr>
+											<th>{{item.e_team.v_name}}</th>
+											<th>{{item.e_date}}</th>
+											<th>{{item.e_start}}</th>
+											<th>{{item.e_end}}</th>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+
+</body>
+</html>

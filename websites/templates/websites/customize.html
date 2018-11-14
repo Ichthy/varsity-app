@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Homepage</title>
+</head>
+<body >
+				<div>
+					<a href="{% url 'websites:Homepage' %}">Home</a>
+				</div>
+				<div >
+					<a href="{% url 'websites:events' %}">Calendar</a>
+				</div>
+				<div >
+					<a href="{% url 'websites:directory' %}">Directory</a>
+				</div>
+				<div >
+					<a >About Us</a>
+				</div>
+				<div >
+					<a >Contact Us</a>
+				</div>
+				
+				<form action="{% url 'websites:editpage' %}" method="post">
+				{% csrf_token %}
+				<button c type="submit" name="action" value="editpage">Edit Varsity Info</button>
+				</form>
+				<form action="{% url 'websites:newmember' %}" method="post">
+				{% csrf_token %}
+				<button c type="submit" name="action" value="newmember">Add Member</button>
+				</form>
+				<form action="{% url 'websites:adddate' %}" method="post">
+				{% csrf_token %}
+				<button c type="submit" name="action" value="adddate">Add Event</button>
+				</form>
+				
+				
+</body>
+</html>
