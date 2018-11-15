@@ -31,14 +31,14 @@ def Homepage(request):
 	return render(request,'websites/Homepage.html')
 	
 def loginattempt (request):
-	return render(request, 'websites/login.html')
+	return render(request, 'websites/login-screen/login.html')
 	
 def login (request):
 	if (isinstance(request.POST['username'], str) and request.POST['username']!= '' and isinstance(request.POST['password'],str)and request.POST['password']!=''):
 		curuser=user.objects.filter(u_username=request.POST['username']).filter(u_password=request.POST['password'])
 		print(user.objects.none() )
 		if (  len(curuser)==0 ):
-			return render(request,'websites/login.html', {'error_message': "Invalid Credentials."})
+			return render(request,'websites/login-screen/login.html', {'error_message': "Invalid Credentials."})
 		else:
 			if(curuser.first().u_varsity==None):
 				return redirect('websites:Homepage')
@@ -46,7 +46,7 @@ def login (request):
 				request.session['vnum']=curuser.first().u_varsity
 				return  redirect('websites:customize')
 	else:
-		return render(request,'websites/login.html', {'error_message': "Invalid Credentials."})
+		return render(request,'websites/login-screen/login.html', {'error_message': "Invalid Credentials."})
 		
 def editpage(request):
 	return render(request,'websites/editpage.html')
