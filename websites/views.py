@@ -26,8 +26,9 @@ def	eventcount():
 	return no+1
 
 def Homepage(request):
-	vars=request.session['vnum']
-	context = {'vnum': vars}
+	if(request.session.modified == True):
+		vars=request.session['vnum']
+		context = {'vnum': vars}
 	return render(request,'websites/Homepage.html')
 	
 def loginattempt (request):
